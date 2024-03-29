@@ -1,3 +1,3 @@
 import os
 
-os.system('tshark -i bluetooth1 -a duration:60 -w pack.pcap')
+os.system('tshark -i bluetooth0 -a duration:60 -w pack.pcap')
