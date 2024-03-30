@@ -2,8 +2,10 @@
 
 This is application for checking secure of BLE ecnryption key.
 
-Working on linux ( version 1.0.0 )
+Working on linux and UNIX ( version 1.0.1 )
 
 To install requirments -> ```pip install pyshark``` and ``` sudo apt install tshark ```
 
 To start ``` python main.py ```
+
+GET SOON update to WINDOWS version
