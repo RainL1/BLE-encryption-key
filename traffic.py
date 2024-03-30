@@ -1,3 +1,8 @@
-import os
+import subprocess
 
-os.system('tshark -i bluetooth0 -a duration:60 -w pack.pcap')
+
+x = subprocess.Popen('tshark -i bluetooth0 -a duration:20 -w pack.pcap', shell=True)
+a = open('conn.txt', 'r+')
+a.truncate(0)
+a.write(str(x.pid))
+

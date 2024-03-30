@@ -17,3 +17,4 @@ elif lenght != -1:
 	a.write('0')
 else:
 	a.write('2')
+a.close()
