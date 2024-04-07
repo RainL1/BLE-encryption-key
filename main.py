@@ -41,7 +41,7 @@ def Reload_Button():
     script()
     if security_status == 1 and connection_status == 1:
         sec = 'Безопасно'
-    elif connection_status == 1:
+    elif connection_status != 1:
         sec = 'Соединение отсутствует'
     else:
         sec = 'Небезопасно'
