@@ -3,29 +3,33 @@ import subprocess
 import psutil
 import pyshark
 
-connection_status = 0
-security_status = 0
+connection_status = 0 # переменная, хранящая статус соединения
+security_status = 0 # переменная, хранящая безопасность соединения
 
 
-root = Tk()
+root = Tk() # создание главного окна
 
-def script():
+def script(): # функция, которая анализирует трафик и определяет ключ шифрования, статус соединения
     global connection_status
     global security_status
-    capture = pyshark.FileCapture('pack.pcap')
-    lenght = -1
+    capture = pyshark.FileCapture('pack.pcap') # переменная, которая хранит трафик открытый через pyshark.FileCapture
+    length = -1
     pkt = ''
-    for packet in capture:
+    for packet in capture: # цикл, определяющий пакет с ключом шифрования
         if 'Long Term Key' in str(packet):
             pkt = (str(packet).split())
             break
     if len(pkt) != 0:
-        lenght = len(pkt[pkt.index('Key:') + 1])
-    for packet in capture:
+        h = pkt[pkt.index('Key:') + 1]
+        if '\n' in h:
+            length = len(pkt[pkt.index('Key:') + 2])
+        else:
+            length = h
+    for packet in capture: # цикл, определяющий статус соединения
         if 'Connect Complete' in str(packet):
-            conenction_status = 1
+            connection_status = 1
             break
-    if lenght == 32:
+    if length == 32: # условие, определяющее безопаснсть соединения
         security_status = 1
 def Start_Button():
     advertisment_label.config(foreground='#000000')
@@ -61,9 +65,9 @@ Button_to_Start.pack(side=BOTTOM, pady=40)
 Butoon_to_Reload = Button(root, text='Обновить', font=90, bg='#004C99', fg='#FFFFFF', command=Reload_Button)
 
 
-advertisment_label = Label(root, text='Подключитесь к устройству в течение 1 минуты', font=70, background='#B3E5FC', foreground='#B3E5FC')
+advertisment_label = Label(root, text='Подключитесь к устройству в течение 1 минуты', font=70, bg='#B3E5FC', fg='#B3E5FC')
 advertisment_label.pack(pady=(50, 0))
-security_label = Label(root, text='Cтатус соединения:\n-', font=70, background='#B3E5FC')
+security_label = Label(root, text='Cтатус соединения:\n-', font=70, bg='#B3E5FC')
 security_label.pack(pady=(10, 0))
 
 
