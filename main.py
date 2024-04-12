@@ -17,14 +17,9 @@ def script(): # функция, которая анализирует трафи
     pkt = ''
     for packet in capture: # цикл, определяющий пакет с ключом шифрования
         if 'Long Term Key' in str(packet):
-            pkt = (str(packet).split())
+            pkt = packet.bthci_cmd.le_long_term_key.replace(':', '')
             break
-    if len(pkt) != 0:
-        h = pkt[pkt.index('Key:') + 1]
-        if '\n' in h:
-            length = len(pkt[pkt.index('Key:') + 2])
-        else:
-            length = h
+    length = len(pkt)
     for packet in capture: # цикл, определяющий статус соединения
         if 'Connect Complete' in str(packet):
             connection_status = 1
