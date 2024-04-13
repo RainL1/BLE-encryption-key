@@ -45,7 +45,10 @@ def Reload_Button():
     else:
         sec = 'Небезопасно'
     advertisment_label.config(foreground='#B3E5FC')
-    security_label.config(text='Безопасность соединения:\n' + sec)
+    if sec == 'Небезопасно':
+        security_label.config(text='Безопасность соединения:\n' + sec, fg='#B22222')
+    else:
+        security_label.config(text='Безопасность соединения:\n' + sec)
     Butoon_to_Reload.pack_forget()
     pcap = open('pack.pcap', 'r+')
     pcap.truncate(0)
