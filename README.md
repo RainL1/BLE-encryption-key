@@ -1,6 +1,6 @@
 # BLE-encryption-key
 
-Документация разработчика: https://drive.google.com/drive/folders/1_yAZK4TOZV2G9edEAj00TrlusRs-DXh-?usp=sharing
+Документация разработчика: https://drive.google.com/drive/folders/13i00uvAx-CUAQOliRabBhj89jSUoEG33?usp=sharing
 
 This is application for checking secure of BLE ecnryption key.
 
