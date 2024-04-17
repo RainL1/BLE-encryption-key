@@ -4,8 +4,7 @@
 
 This is application for checking secure of BLE ecnryption key.
 
-Working on UNIX (v. 1.2.0)
-MacOS needs another tkinter interface
+Working on UNIX
 
 To install requirments -> 
 ```
